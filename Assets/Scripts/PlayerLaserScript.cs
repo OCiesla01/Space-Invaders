@@ -35,9 +35,15 @@ public class PlayerLaserScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             gameObject.SetActive(false);
             gameManager.AddScore(1);
+        }
+
+        if (collision.gameObject.CompareTag("Meteor"))
+        {
+            Debug.Log("Collision with meteor");
+            gameObject.SetActive(false);
         }
     }
 }

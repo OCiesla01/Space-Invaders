@@ -30,6 +30,14 @@ public class EnemyScript : MonoBehaviour
         if (laser != null)
         {
             laser.transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
+            laser.transform.rotation = Quaternion.identity;
+
+            Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.velocity = Vector2.zero;
+            }
+
             laser.SetActive(true);
         }
     }

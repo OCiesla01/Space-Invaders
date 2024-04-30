@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5102785561062284435}
   - component: {fileID: 5901801042529102872}
   - component: {fileID: 3569909631554594755}
-  - component: {fileID: -3553142884814806177}
-  m_Layer: 0
+  - component: {fileID: -4175433056467875307}
+  m_Layer: 6
   m_Name: EnemyGray2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -28,9 +28,9 @@ Transform:
   m_GameObject: {fileID: 4233068117078505475}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 4.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -99,10 +99,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLaser: {fileID: 0}
-  minTimeToShoot: 1
-  maxTimeToShoot: 8
---- !u!61 &-3553142884814806177
-BoxCollider2D:
+  minTimeToShoot: 2
+  maxTimeToShoot: 16
+--- !u!68 &-4175433056467875307
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -134,15 +134,28 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.04, y: 0.84}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.04, y: 0.84}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.0018427372, y: -0.26319098}
+  - {x: -0.071752906, y: -0.26524717}
+  - {x: -0.061073773, y: -0.42126334}
+  - {x: -0.24986099, y: -0.42541122}
+  - {x: -0.52205616, y: 0.039067417}
+  - {x: -0.5207447, y: 0.1661565}
+  - {x: -0.35510525, y: 0.17239738}
+  - {x: -0.18038173, y: 0.33657292}
+  - {x: -0.0025305133, y: 0.42151687}
+  - {x: 0.1869786, y: 0.33862177}
+  - {x: 0.19476137, y: 0.29882807}
+  - {x: 0.24985941, y: 0.2578172}
+  - {x: 0.35816383, y: 0.16650909}
+  - {x: 0.51968586, y: 0.16706866}
+  - {x: 0.5136298, y: 0.054549754}
+  - {x: 0.25241345, y: -0.42125997}
+  - {x: 0.05963725, y: -0.42085502}
+  - {x: 0.07049191, y: -0.26204887}
+  - {x: 0.0018426776, y: -0.263191}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
