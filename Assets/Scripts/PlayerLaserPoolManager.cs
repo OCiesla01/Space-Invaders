@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPoolingScript : MonoBehaviour
+public class PlayerLaserPoolManager : MonoBehaviour
 {
 
-    public static ObjectPoolingScript instance;
+    public static PlayerLaserPoolManager instance;
 
     [SerializeField] private GameObject bullet;
     private List<GameObject> pooledBullets = new List<GameObject>();

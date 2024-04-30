@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletSpawnerScript : MonoBehaviour
+public class PlayerLAserSpawner : MonoBehaviour
 {
 
     private KeyCode shootKeyCode = KeyCode.Space;
@@ -17,7 +17,7 @@ public class BulletSpawnerScript : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = ObjectPoolingScript.instance.GetPooledObject();
+        GameObject bullet = PlayerLaserPoolManager.instance.GetPooledObject();
 
         if (bullet != null)
         {
