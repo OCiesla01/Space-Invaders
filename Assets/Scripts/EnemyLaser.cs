@@ -14,7 +14,6 @@ public class EnemyLaser : MonoBehaviour
     private void Start()
     {
         playerSpaceship = GameObject.Find("Player").GetComponent<PlayerSpaceship>();
-        
     }
 
     void Update()
@@ -42,7 +41,6 @@ public class EnemyLaser : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Meteor"))
         {
-            Debug.Log("Collision with meteor");
             gameObject.SetActive(false);
         }
     }

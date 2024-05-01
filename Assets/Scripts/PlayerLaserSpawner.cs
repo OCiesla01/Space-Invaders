@@ -6,6 +6,12 @@ public class PlayerLaserSpawner : MonoBehaviour
 {
 
     private KeyCode shootKeyCode = KeyCode.Space;
+    private WaveSpawner waveSpawner;
+
+    private void Start()
+    {
+        waveSpawner = GameObject.Find("Wave").GetComponent<WaveSpawner>();
+    }
 
     void Update()
     {
@@ -17,20 +23,23 @@ public class PlayerLaserSpawner : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet = PlayerLaserPoolManager.instance.GetPooledObject();
-
-        if (bullet != null)
+        if (waveSpawner.isWaveSpawned)
         {
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = Quaternion.identity;
+            GameObject bullet = PlayerLaserPoolManager.instance.GetPooledObject();
 
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (bullet != null)
             {
-                rb.velocity = Vector2.zero;
-            }
+                bullet.transform.position = transform.position;
+                bullet.transform.rotation = Quaternion.identity;
 
-            bullet.SetActive(true);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.velocity = Vector2.zero;
+                }
+
+                bullet.SetActive(true);
+            }
         }
     }
 }

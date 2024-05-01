@@ -10,10 +10,12 @@ public class PlayerLaserScript : MonoBehaviour
     [SerializeField] private float speed = 10.0f;
     private float disableZone = 6.5f;
     private GameManager gameManager;
+    private WaveSpawner waveSpawner;
 
     private void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        waveSpawner = GameObject.Find("Wave").GetComponent<WaveSpawner>();
     }
 
     void Update()
@@ -38,11 +40,11 @@ public class PlayerLaserScript : MonoBehaviour
             collision.gameObject.SetActive(false);
             gameObject.SetActive(false);
             gameManager.AddScore(1);
+            waveSpawner.enemiesInWave -= 1;
         }
 
         if (collision.gameObject.CompareTag("Meteor"))
         {
-            Debug.Log("Collision with meteor");
             gameObject.SetActive(false);
         }
     }

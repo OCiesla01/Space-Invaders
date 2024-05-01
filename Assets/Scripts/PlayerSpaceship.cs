@@ -8,7 +8,7 @@ public class PlayerSpaceship : MonoBehaviour
     [Header("Player Movement")]
     [SerializeField] private float moveSpeed = 4.0f;
 
-    private int playerLives = 3;
+    public int playerLives = 13;
 
     private float sideBound = 8.0f;
     private float playerYPosition = -4.0f;
@@ -58,14 +58,21 @@ public class PlayerSpaceship : MonoBehaviour
 
     public void HandlePlayerLives()
     {
+        playerLives -= 1;
+
         if (playerLives > 0)
         {
-            playerLives -= 1;
+            gameManager.DecreasePlayerLives();
         }
         else
         {
             Destroy(gameObject);
             gameManager.isGameRunning = false;
         }
+    }
+
+    public void ResetPlayersPosition()
+    {
+        gameObject.transform.position = new Vector3(0, -4, 0);
     }
 }

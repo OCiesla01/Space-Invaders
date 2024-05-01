@@ -12,15 +12,17 @@ public class EnemyController : MonoBehaviour
     private float stepDown = .75f;
 
     private WaveSpawner waveSpawner;
+    private GameManager gameManager;
 
     private void Start()
     {
         waveSpawner = GameObject.Find("Wave").GetComponent<WaveSpawner>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
     {
-        if (waveSpawner.isWaveSpawned)
+        if (waveSpawner.isWaveSpawned && gameManager.isGameRunning)
         {
             if (movingRight)
             {

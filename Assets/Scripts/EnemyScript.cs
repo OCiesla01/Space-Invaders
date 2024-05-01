@@ -9,8 +9,14 @@ public class EnemyScript : MonoBehaviour
     public float minTimeToShoot;
     public float maxTimeToShoot;
 
+    private WaveSpawner waveSpawner;
+    private GameManager gameManager;
+
     void Start()
     {
+        waveSpawner = GameObject.Find("Wave").GetComponent<WaveSpawner>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         StartCoroutine(ShootingRoutine());
     }
 
@@ -25,20 +31,23 @@ public class EnemyScript : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject laser = EnemyLaserPoolManager.instance.GetPooledObject();
-
-        if (laser != null)
+        if (waveSpawner.isWaveSpawned && gameManager.isGameRunning)
         {
-            laser.transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
-            laser.transform.rotation = Quaternion.identity;
+            GameObject laser = EnemyLaserPoolManager.instance.GetPooledObject();
 
-            Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (laser != null)
             {
-                rb.velocity = Vector2.zero;
-            }
+                laser.transform.position = new Vector2(transform.position.x, transform.position.y - 0.5f);
+                laser.transform.rotation = Quaternion.identity;
 
-            laser.SetActive(true);
+                Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.velocity = Vector2.zero;
+                }
+
+                laser.SetActive(true);
+            }
         }
     }
 }

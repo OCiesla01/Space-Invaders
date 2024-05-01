@@ -5,9 +5,19 @@ using UnityEngine;
 public class MeteorScript : MonoBehaviour
 {
 
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
+
     void Update()
     {
-        transform.Translate(Vector3.right * GetRandomMeteorSpeed() * Time.deltaTime);
+        if (gameManager.isGameRunning)
+        {
+            transform.Translate(Vector3.right * GetRandomMeteorSpeed() * Time.deltaTime);
+        }
     }
 
     private float GetRandomMeteorSpeed()
