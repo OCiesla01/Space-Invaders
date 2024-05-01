@@ -14,3 +14,7 @@ Created enemies prefabs, enemy wave movement logic, player and enemy shooting fu
 ***V0.3***
 
 Changed the movement of enemy wave, the scale of wave, and implemented the spawning of wave (row by row). Added functionality to the main menu button (game start). Added flying meteors, which are used as a cover.
+
+***V0.4***
+
+Created UI for the game, updated some functionalities.
