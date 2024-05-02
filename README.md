@@ -22,3 +22,7 @@ Created UI for the game, updated some functionalities.
 ***V0.5***
 
 Implemented spaceship color selection (data persistance between scenes). Created high score saving (data persistance between sessions). Added UI to display best scores.
+
+***V0.6***
+
+Created Loading Scene which shows enemy data.
