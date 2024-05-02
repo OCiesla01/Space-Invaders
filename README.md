@@ -18,3 +18,7 @@ Changed the movement of enemy wave, the scale of wave, and implemented the spawn
 ***V0.4***
 
 Created UI for the game, updated some functionalities.
+
+***V0.5***
+
+Implemented spaceship color selection (data persistance between scenes). Created high score saving (data persistance between sessions). Added UI to display best scores.
