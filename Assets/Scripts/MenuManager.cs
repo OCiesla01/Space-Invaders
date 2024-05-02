@@ -21,9 +21,9 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    public void LoadIntelScene()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("IntelScene");
 
     }
 
