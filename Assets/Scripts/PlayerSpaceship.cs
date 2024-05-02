@@ -18,11 +18,23 @@ public class PlayerSpaceship : MonoBehaviour
 
     private WaveSpawner waveSpawner;
     private GameManager gameManager;
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
         waveSpawner = GameObject.Find("Wave").GetComponent<WaveSpawner>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (DataManager.instance != null && DataManager.instance.selectedSprite != null)
+        {
+            spriteRenderer.sprite = DataManager.instance.selectedSprite;
+        }
+        else
+        {
+            Debug.LogError("No sprite or DataManager found");
+        }
     }
 
     void Update()
@@ -62,12 +74,12 @@ public class PlayerSpaceship : MonoBehaviour
 
         if (playerLives > 0)
         {
-            gameManager.DecreasePlayerLives();
+            gameManager.UpdatePlayerLivesDisplay();
         }
         else
         {
             Destroy(gameObject);
-            gameManager.isGameRunning = false;
+            gameManager.GameOver();
         }
     }
 

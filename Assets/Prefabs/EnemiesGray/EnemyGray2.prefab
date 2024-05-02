@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63fc2de544709249adff44ed943c3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  value: 10
   enemyLaser: {fileID: 0}
   minTimeToShoot: 2
   maxTimeToShoot: 16

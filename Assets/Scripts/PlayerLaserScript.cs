@@ -37,9 +37,11 @@ public class PlayerLaserScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            EnemyScript enemyScript = collision.gameObject.GetComponent<EnemyScript>();
+
             collision.gameObject.SetActive(false);
             gameObject.SetActive(false);
-            gameManager.AddScore(1);
+            gameManager.AddScore(enemyScript.value);
             waveSpawner.enemiesInWave -= 1;
         }
 

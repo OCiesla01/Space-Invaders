@@ -4,12 +4,14 @@ using TMPro;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Scene = UnityEngine.SceneManagement.Scene;
 
 public class GameManager : MonoBehaviour
 {
 
-    private int score = 0;
-    private int wavesDefeated = 0;
+    public int score = 0;
+    public int wavesDefeated = 0;
+    private int waveValue = 250;
     public bool isGameRunning = true;
 
     private PlayerSpaceship playerSpaceship;
@@ -41,24 +43,29 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
+        UpdateScoreDisplay();
+    }
+
+    public void UpdateScoreDisplay()
+    {
         scoreText.text = "Score: " + score;
     }
 
     public void AddWaveDefeated()
     {
         wavesDefeated += 1;
+        UpdateWaveDisplay();
+        AddScore(waveValue);
+    }
+
+    public void UpdateWaveDisplay()
+    {
         wavesDefeatedText.text = "Waves Defeated: " + wavesDefeated;
-        AddScore(100);
     }
 
-    public void DecreasePlayerLives()
+    public void UpdatePlayerLivesDisplay()
     {
-        livesText.text = "Lives: " + playerSpaceship.playerLives;
-    }
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene("GameScene");
+        livesText.text = "Lives Left: " + playerSpaceship.playerLives;
     }
 
     public void ResetGame()
@@ -77,5 +84,21 @@ public class GameManager : MonoBehaviour
         gameOverWavesDefeatedText.text = "Total Waves Defeated: " + wavesDefeated;
         gameOverScreen.SetActive(true);
         inGameUI.SetActive(false);
+
+        bool shouldSave = false;
+        if (score > DataManager.instance.highScore)
+        {
+            DataManager.instance.highScore = score;
+            shouldSave = true;
+        }
+        if (wavesDefeated > DataManager.instance.totalWavesDefeated)
+        {
+            DataManager.instance.totalWavesDefeated = wavesDefeated;
+            shouldSave = true;
+        }
+        if (shouldSave)
+        {
+            DataManager.instance.SaveInformation();
+        }
     }
 }

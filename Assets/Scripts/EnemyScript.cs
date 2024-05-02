@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
 
+    public int value;
+
     public GameObject enemyLaser;
     public float minTimeToShoot;
     public float maxTimeToShoot;

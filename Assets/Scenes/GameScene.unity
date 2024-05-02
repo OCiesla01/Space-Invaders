@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 520277655}
   - component: {fileID: 520277654}
   m_Layer: 5
-  m_Name: WaveText
+  m_Name: GameOverWavesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1857,7 +1857,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.99, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1916,7 +1916,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.99, y: 0.75}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 0.99, y: 0.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2370,7 +2370,7 @@ GameObject:
   - component: {fileID: 1917997616}
   - component: {fileID: 1917997615}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: GameOverScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2521,6 +2521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b93a05fd2e227a4dbdd62ebe634d21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   isGameRunning: 1
   gameOverScreen: {fileID: 1128258148}
   inGameUI: {fileID: 1644898731}
