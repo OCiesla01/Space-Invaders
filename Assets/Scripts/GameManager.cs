@@ -13,12 +13,14 @@ public class GameManager : MonoBehaviour
     public int wavesDefeated = 0;
     private int waveValue = 250;
     public bool isGameRunning = true;
+    public bool isGamePaused = false;
 
     private PlayerSpaceship playerSpaceship;
 
     [Header("UI")]
     public GameObject gameOverScreen;
     public GameObject inGameUI;
+    public GameObject pauseScreen;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI wavesDefeatedText;
@@ -38,6 +40,8 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+
+        ManagePause();
     }
 
     public void AddScore(int scoreToAdd)
@@ -99,6 +103,41 @@ public class GameManager : MonoBehaviour
         if (shouldSave)
         {
             DataManager.instance.SaveInformation();
+        }
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+        isGamePaused = true;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        isGamePaused = false;
+        pauseScreen.SetActive(false);
+    }
+
+    public void ManagePause()
+    {
+        if (SceneManager.GetActiveScene().name == "GameScene" && isGameRunning)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                if (isGamePaused)
+                {
+                    ResumeGame();
+                    pauseScreen.SetActive(false);
+                    isGamePaused = false;
+                }
+                else if (!isGamePaused)
+                {
+                    PauseGame();
+                    pauseScreen.SetActive(true);
+                    isGamePaused = true;
+                }
+            }
         }
     }
 }

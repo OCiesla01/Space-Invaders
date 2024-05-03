@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeteorScript : MonoBehaviour
+public class BonusScript : MonoBehaviour
 {
 
     private GameManager gameManager;
@@ -16,7 +16,7 @@ public class MeteorScript : MonoBehaviour
     {
         if (gameManager.isGameRunning)
         {
-            transform.Translate(Vector3.right * GetRandomMeteorSpeed() * Time.deltaTime);
+            transform.Translate(Vector3.right * GetRandomBonusSpeed() * Time.deltaTime);
         }
 
         if (gameObject.transform.position.x > 10)
@@ -25,8 +25,8 @@ public class MeteorScript : MonoBehaviour
         }
     }
 
-    private float GetRandomMeteorSpeed()
+    private float GetRandomBonusSpeed()
     {
-        return Random.Range(1, 4);
+        return Random.Range(2, 6);
     }
 }

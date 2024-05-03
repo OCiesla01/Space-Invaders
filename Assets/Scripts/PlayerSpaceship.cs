@@ -6,7 +6,7 @@ public class PlayerSpaceship : MonoBehaviour
 {
 
     [Header("Player Movement")]
-    [SerializeField] private float moveSpeed = 4.0f;
+    public float moveSpeed = 4.0f;
 
     public int playerLives = 13;
 
@@ -86,5 +86,10 @@ public class PlayerSpaceship : MonoBehaviour
     public void ResetPlayersPosition()
     {
         gameObject.transform.position = new Vector3(0, -4, 0);
+    }
+
+    public void ActivateShield()
+    {
+        Debug.Log("Shield Activated.");
     }
 }

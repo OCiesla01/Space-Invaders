@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [Header("Enemy Wave")]
-    [SerializeField] private float speed = 0.5f;
+    public float speed = 0.5f;
 
     private bool movingRight = true;
     private float bounds = 2.4f;
