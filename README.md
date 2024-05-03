@@ -26,3 +26,7 @@ Implemented spaceship color selection (data persistance between scenes). Created
 ***V0.6***
 
 Created Loading Scene which shows enemy data.
+
+***V0.7***
+
+Created four type of bonuses which affect gameplay, implemented pause functionality.
