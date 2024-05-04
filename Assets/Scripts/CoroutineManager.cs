@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CoroutineManager : MonoBehaviour
 {
+
+    [Header("Coroutine Manager Config")]
     public static CoroutineManager instance;
 
     void Awake()
@@ -19,6 +21,7 @@ public class CoroutineManager : MonoBehaviour
         }
     }
 
+    // Start specified coroutine
     public void StartBonusCoroutine(IEnumerator coroutine)
     {
         StartCoroutine(coroutine);

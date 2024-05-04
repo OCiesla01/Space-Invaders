@@ -6,10 +6,10 @@ using UnityEngine;
 public class DataManager : MonoBehaviour
 {
 
+    [Header("Data Manager Config")]
     public static DataManager instance;
 
     public Sprite selectedSprite;
-
     public int highScore;
     public int totalWavesDefeated;
 
@@ -35,6 +35,7 @@ public class DataManager : MonoBehaviour
         public int waves;
     }
 
+    // Save game information to json file
     public void SaveInformation()
     {
         SaveData data = new SaveData();
@@ -46,6 +47,7 @@ public class DataManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
+    // Load game information from json file
     public void LoadInformation()
     {
         string path = Application.persistentDataPath + "/savefile.json";

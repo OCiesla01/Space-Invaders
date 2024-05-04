@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
 
-    public Sprite[] spaceshipSprites;
+    [Header("Main Menu Manager Config")]
+    [SerializeField] private Sprite[] spaceshipSprites;
 
     public TextMeshProUGUI highestScore;
     public TextMeshProUGUI highestWave;
@@ -19,22 +20,30 @@ public class MenuManager : MonoBehaviour
         {
             UpdateBestScoresDisplay();
         }
+
+        AudioManager.instance.PlayMenuMusic();
     }
 
+    // Load Intel scene
     public void LoadIntelScene()
     {
+        AudioManager.instance.StopMenuMusic();
+        AudioManager.instance.PlayStartButton();
         SceneManager.LoadScene("IntelScene");
-
     }
 
+    // Handle spaceship selection
     public void SelectSpaceship(int index)
     {
         if (index >= 0 && index < spaceshipSprites.Length)
         {
+            AudioManager.instance.PlaySelectButton();
             DataManager.instance.selectedSprite = spaceshipSprites[index];
         }
     }
 
+
+    // Display best scores from saved data
     public void UpdateBestScoresDisplay()
     {
         highestScore.text = "Highest Score: " + DataManager.instance.highScore;

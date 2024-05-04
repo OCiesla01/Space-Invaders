@@ -98,10 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63fc2de544709249adff44ed943c3b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 10
-  enemyLaser: {fileID: 0}
+  pointValue: 10
+  enemyLaser: {fileID: 2304330070172946557, guid: db54c47b7576ec14090931392f0d66bd, type: 3}
   minTimeToShoot: 2
   maxTimeToShoot: 16
+  laserOffset: 0.5
 --- !u!68 &-4175433056467875307
 EdgeCollider2D:
   m_ObjectHideFlags: 0

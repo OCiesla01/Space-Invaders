@@ -9,9 +9,10 @@ using Scene = UnityEngine.SceneManagement.Scene;
 public class GameManager : MonoBehaviour
 {
 
-    public int score = 0;
-    public int wavesDefeated = 0;
-    private int waveValue = 250;
+    [Header("Game Manager Config")]
+    [SerializeField] private int score = 0;
+    [SerializeField] private int wavesDefeated = 0;
+    [SerializeField] private int waveValue = 250;
     public bool isGameRunning = true;
     public bool isGamePaused = false;
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject inGameUI;
     public GameObject pauseScreen;
+    public GameObject confirmationQuitScreen;
 
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI wavesDefeatedText;
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerSpaceship = GameObject.Find("Player").GetComponent<PlayerSpaceship>();
+        AudioManager.instance.PlayBackgroundMusic();
     }
 
     void Update()
@@ -44,17 +47,20 @@ public class GameManager : MonoBehaviour
         ManagePause();
     }
 
+    // Add specified score
     public void AddScore(int scoreToAdd)
     {
         score += scoreToAdd;
         UpdateScoreDisplay();
     }
 
+    // Update score UI
     public void UpdateScoreDisplay()
     {
         scoreText.text = "Score: " + score;
     }
 
+    // Add wave defeated to score
     public void AddWaveDefeated()
     {
         wavesDefeated += 1;
@@ -62,32 +68,54 @@ public class GameManager : MonoBehaviour
         AddScore(waveValue);
     }
 
+    // Update wave UI
     public void UpdateWaveDisplay()
     {
         wavesDefeatedText.text = "Waves Defeated: " + wavesDefeated;
     }
 
+    // Update player's lives UI
     public void UpdatePlayerLivesDisplay()
     {
         livesText.text = "Lives Left: " + playerSpaceship.playerLives;
     }
 
+    // Reset game - reset scene
     public void ResetGame()
     {
         SceneManager.LoadScene("GameScene");
     }
 
-    public void BackToMenu()
+    // Go to menu scene
+    public void GoToMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
 
+    // Show quit confirmation UI
+    public void ShowQuitGameConfirmation()
+    {
+        confirmationQuitScreen.SetActive(true);
+    }
+
+    // Quit game
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+
+    // Handle data when game over
     public void GameOver()
     {
         gameOverScoreText.text = "Your Score: " + score;
         gameOverWavesDefeatedText.text = "Total Waves Defeated: " + wavesDefeated;
         gameOverScreen.SetActive(true);
         inGameUI.SetActive(false);
+        AudioManager.instance.StopBackgroundMusic();
 
         bool shouldSave = false;
         if (score > DataManager.instance.highScore)
@@ -106,19 +134,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // Pause game
     public void PauseGame()
     {
         Time.timeScale = 0;
         isGamePaused = true;
+        AudioManager.instance.PauseBackgroundMusic();
     }
 
+    // Resume game
     public void ResumeGame()
     {
         Time.timeScale = 1;
         isGamePaused = false;
         pauseScreen.SetActive(false);
+        AudioManager.instance.UnPauseBackgroundMusic();
     }
 
+    // Handle game pause logic
     public void ManagePause()
     {
         if (SceneManager.GetActiveScene().name == "GameScene" && isGameRunning)
@@ -130,6 +163,7 @@ public class GameManager : MonoBehaviour
                     ResumeGame();
                     pauseScreen.SetActive(false);
                     isGamePaused = false;
+                    AudioManager.instance.UnPauseBackgroundMusic();
                 }
                 else if (!isGamePaused)
                 {

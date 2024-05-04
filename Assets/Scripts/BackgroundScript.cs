@@ -5,7 +5,7 @@ using UnityEngine;
 public class BackgroundScript : MonoBehaviour
 {
 
-    [Header("Background Movement")]
+    [Header("Background Movement Config")]
     [SerializeField] private float backgroundSpeed = 0.1f;
     [SerializeField] private float snapZone = -10.3f;
     private Vector3 resetPosition = new Vector3(0, 0, 1);
@@ -20,6 +20,7 @@ public class BackgroundScript : MonoBehaviour
         transform.Translate(Vector2.down * backgroundSpeed * Time.deltaTime);
     }
 
+    // Reset background position
     private void ResetPosition()
     {
         transform.position = resetPosition;
