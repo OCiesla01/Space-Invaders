@@ -30,3 +30,8 @@ Created Loading Scene which shows enemy data.
 ***V0.7***
 
 Created four type of bonuses which affect gameplay, implemented pause functionality.
+
+***V0.8***
+
+Created quit game functionality, implemented game audio (music + SFX), cleaned and optimized code, fixed some bugs. 
+Finished project
