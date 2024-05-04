@@ -1,6 +1,11 @@
 # Space Invaders
 
 _Space Invaders is my fourth project. It is the recreation of popular game with the same name._
+![1](https://github.com/OCiesla01/Space-Invaders/assets/130390861/bd8648e1-2607-40b2-844f-c9deaab7567b)
+![2](https://github.com/OCiesla01/Space-Invaders/assets/130390861/2a9b3511-543a-4a46-9011-546edca06e5c)
+![3](https://github.com/OCiesla01/Space-Invaders/assets/130390861/59711aeb-6422-4df7-925f-5ce6d2613b3b)
+![4](https://github.com/OCiesla01/Space-Invaders/assets/130390861/33e2784f-9234-4e81-adef-f1f5cfc61be3)
+![5](https://github.com/OCiesla01/Space-Invaders/assets/130390861/1117df29-09c1-426c-8f2d-fe29d6fbda68)
 
 ***V0.1***
 
